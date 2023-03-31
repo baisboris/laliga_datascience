@@ -1,0 +1,52 @@
+/* 
+psql -d laliga
+*/
+
+CREATE TABLE value(
+    Season VARCHAR(10),
+    Team VARCHAR(30),
+    Budget NUMERIC);
+\copy value FROM './value.csv' WITH DELIMITER ',' NULL AS 'NULL' CSV HEADER;
+
+
+CREATE TABLE position(
+    Season VARCHAR(10),
+    Team VARCHAR(30),
+    poisition INTEGER,
+    Cost_Position NUMERIC,
+    predicted_position INTEGER);
+\copy poisition FROM './position.csv' WITH DELIMITER ',' NULL AS 'NULL' CSV HEADER;
+
+CREATE TABLE points(
+    Season VARCHAR(10),
+    Team VARCHAR(30),
+    points INTEGER,
+    Cost_Point NUMERIC,
+    predicted_points INTEGER);
+\copy points FROM './points.csv' WITH DELIMITER ',' NULL AS 'NULL' CSV HEADER;
+
+
+
+
+
+CREATE TABLE budget(
+    Season VARCHAR(10),
+    Team VARCHAR(30),
+    Budget NUMERIC,
+    position INTEGER,
+    points INTEGER,
+    Cost_Point NUMERIC,
+    Cost_Position NUMERIC,
+    predicted_position INTEGER,
+    predicted_points INTEGER);
+
+\copy budget FROM './budget.csv' WITH DELIMITER ',' NULL AS 'NULL' CSV HEADER;
+
+CREATE TABLE results(
+    Season VARCHAR(10),
+    Team VARCHAR(30),
+    Budget NUMERIC,
+    position INTEGER,
+    points INTEGER);
+
+\copy results FROM './results.csv' WITH DELIMITER ',' NULL AS 'NULL' CSV HEADER;
